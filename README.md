@@ -1,7 +1,5 @@
-LinkedLists
+Implement LinkedList.m
 ===========
-
-#Implement LinkedList.m
 
 There are five methods declared in `LinkedList.h`, they are:
 
