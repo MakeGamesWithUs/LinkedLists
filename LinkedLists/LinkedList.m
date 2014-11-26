@@ -44,22 +44,23 @@
 
 - (void)addObject:(id)object atIndex:(NSUInteger)index
 {
+    Node* newNode = [Node new];
+    newNode.data = object;
+    
     // Special case: index 0 means the root node
     if (index == 0)
     {
         if (!self.rootNode)
         {
             // If the root node doesn't exist, create it
-            self.rootNode = [Node new];
-            self.rootNode.data = object;
+            self.rootNode = newNode;
         }
         else
         {
             // Otherwise, create a new root and make the old root be the next node
             Node *oldRoot = self.rootNode;
             
-            self.rootNode = [Node new];
-            self.rootNode.data = object;
+            self.rootNode = newNode;
             self.rootNode.next = oldRoot;
         }
     }
@@ -68,8 +69,6 @@
         Node* nodeBefore = [self nodeAtIndex:index - 1];
         Node* nodeAfter = nodeBefore.next;
         
-        Node* newNode = [Node new];
-        newNode.data = object;
         nodeBefore.next = newNode;
         newNode.next = nodeAfter;
     }
